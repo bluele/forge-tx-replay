@@ -21,7 +21,7 @@ $ forge install https://github.com/bluele/forge-tx-replay
 0. Deploy the [`BrokenCounter`](./test/Counter.sol) contract and send a transaction but it fails.
 
 ```
-$ forge create BrokenCounter --rpc-url https://ethereum-sepolia-rpc.publicnode.com
+$ forge create BrokenCounter --rpc-url https://ethereum-sepolia-archive.allthatnode.com
 [⠒] Compiling...
 [⠰] Compiling 1 files with 0.8.24
 [⠔] Solc 0.8.24 finished in 1.26s
@@ -31,10 +31,10 @@ Deployed to: 0xF6b11C29307d230668536721537250e35124973c
 Transaction hash: 0x5d2e24c7b00c14475e428ef7e8ba879fbdfadcd6b342e939e3e63710d8a081d7
 
 # First tx is succeeded
-$ cast send 0xF6b11C29307d230668536721537250e35124973c "increment(uint256)" 1 --legacy --gas-limit 1000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com
+$ cast send 0xF6b11C29307d230668536721537250e35124973c "increment(uint256)" 1 --legacy --gas-limit 1000000 --rpc-url https://ethereum-sepolia-archive.allthatnode.com
 
 # Second tx is failed
-$ cast send 0xF6b11C29307d230668536721537250e35124973c "increment(uint256)" 1 --legacy --gas-limit 1000000 --rpc-url https://ethereum-sepolia-rpc.publicnode.com
+$ cast send 0xF6b11C29307d230668536721537250e35124973c "increment(uint256)" 1 --legacy --gas-limit 1000000 --rpc-url https://ethereum-sepolia-archive.allthatnode.com
 ...
 status                  0 (failed)
 transactionHash         0xfbbf94672e596fa46bb5073f76062fdddc5e5ac6bde7a9ac2b9f902e93ab00e9
