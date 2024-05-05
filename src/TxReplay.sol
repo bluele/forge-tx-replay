@@ -121,14 +121,16 @@ abstract contract TxReplay is Test, ITxReplay {
      */
     function transaction(string memory forkUrlOrAlias, bytes32 txHash) internal returns (TxInfo memory) {
         string memory forkUrl = vm.rpcUrl(forkUrlOrAlias);
-        string[] memory inputs = new string[](7);
+        string[] memory inputs = new string[](9);
         inputs[0] = "curl";
         inputs[1] = "-s";
         inputs[2] = "-X";
         inputs[3] = "POST";
-        inputs[4] = forkUrl;
-        inputs[5] = "--data";
-        inputs[6] = string.concat(
+        inputs[4] = "-H";
+        inputs[5] = "Content-Type: application/json";
+        inputs[6] = forkUrl;
+        inputs[7] = "--data";
+        inputs[8] = string.concat(
             "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getTransactionByHash\",\"params\":[\"0x",
             hexEncode(txHash),
             "\"],\"id\":1}"
