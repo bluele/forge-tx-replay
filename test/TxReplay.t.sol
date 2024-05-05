@@ -40,7 +40,7 @@ contract TxReplayTest is TxReplay {
         assertEq(FixedCounter(counter).number(), current + 1);
     }
 
-    // returned URL must be that of the archive node
+    // returned URL must be that of the sepolia archive node
     function getRpcUrl() internal view returns (string memory) {
         return vm.envString("RPC_URL");
     }

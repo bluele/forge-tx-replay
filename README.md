@@ -56,7 +56,8 @@ contract TxReplayTest is TxReplay {
     function test_replay() public {
         CallInfo memory callInfo = restore(
             // fork url for mainnet, sepolia, etc.
-            "https://ethereum-sepolia-rpc.publicnode.com",
+            // the fork url should be an archive node
+            "https://ethereum-sepolia-archive.allthatnode.com",
             // txHash of the failed target transaction
             0xfbbf94672e596fa46bb5073f76062fdddc5e5ac6bde7a9ac2b9f902e93ab00e9,
             // You can choose which block to restore
@@ -97,7 +98,7 @@ import {BrokenCounter, DebugBrokenCounter} from "./Counter.sol";
 contract TxReplayTest is TxReplay {
     function test_debug() public {
         CallInfo memory callInfo = restore(
-            "https://ethereum-sepolia-rpc.publicnode.com",
+            "https://ethereum-sepolia-archive.allthatnode.com",
             0xfbbf94672e596fa46bb5073f76062fdddc5e5ac6bde7a9ac2b9f902e93ab00e9,
             RestoreType.EXACT
         );
