@@ -87,7 +87,7 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 2.21s (2.21s CPU ti
 ...
 ```
 
-4. Write a script that replays the target transaction and debug with the local project's contract `DebugBrokenCounter` that contains `console.log` for debugging.
+4. Write a script that replays the target transaction and debug with the local project's contract [`DebugBrokenCounter`](./test/Counter.sol) that contains `console.log` for debugging.
 
 ```solidity
 pragma solidity ^0.8.0;
