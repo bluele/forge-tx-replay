@@ -73,6 +73,15 @@ abstract contract TxReplay is Test, ITxReplay {
     }
 
     /**
+     * @dev Set the code of the target contract
+     * @param target The target contract
+     * @param newCode The new code
+     */
+    function setCode(address target, bytes memory newCode) internal {
+        vm.etch(target, newCode);
+    }
+
+    /**
      * @dev Restore the state and return the call info of the target transaction
      */
     function restore(string memory forkUrlOrAlias, bytes32 txHash, RestoreType mode)
@@ -165,13 +174,8 @@ abstract contract TxReplay is Test, ITxReplay {
      * @param target The target contract address
      */
     function codeAt(address target) internal view returns (bytes memory code) {
-        assembly {
-            let size := extcodesize(target)
-            code := mload(0x40)
-            mstore(0x40, add(code, and(add(add(size, 0x20), 0x1f), not(0x1f))))
-            mstore(code, size)
-            extcodecopy(target, add(code, 0x20), 0, size)
-        }
+        code = target.code;
+        require(code.length > 0, "invalid contract address");
     }
 
     function hexEncode(bytes32 _bytes32) private pure returns (string memory) {
