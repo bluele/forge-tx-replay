@@ -14,7 +14,7 @@ Add `forge-tx-replay` to your project using Forge:
 $ forge install https://github.com/bluele/forge-tx-replay
 ```
 
-### Example-1: Replay a failed transaction corresponding to a given txHash
+### Example-1: Replay a failed transaction with txHash
 
 *You can see the full example code in the [test](./test) directory.*
 
@@ -46,6 +46,8 @@ revertReason            increment failed
 
 1. Get the hash of the target transaction from etherscan.io or another source. In the above example, the hash is `0xfbbf94672e596fa46bb5073f76062fdddc5e5ac6bde7a9ac2b9f902e93ab00e9`.
 2. Write a script that replays the target transaction
+
+*If you don't know the target transaction hash or the tx is not contained in the block, you can use the raw transaction bytes instead of the txHash. See Example-2.*
 
 ```solidity
 pragma solidity ^0.8.0;
@@ -129,7 +131,7 @@ Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 3.66s (1.94s CPU ti
 
 You can see the logs from the `console.log` in the `DebugBrokenCounter` contract.
 
-### Example-2: Replay a failed transaction directly
+### Example-2: Replay a failed transaction with raw transaction bytes
 
 0-1. Same as Example-1
 2. Write a script that replays the target transaction
